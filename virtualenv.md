@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Un entorno de desarrollo virtual python o simplemente entorno virtual python es un software que me permite gestionar programas y paquetes python sin tener permisos de administración, es decir, cualquier usuario sin privilegios puede tener uno o más "espacios aislados" (ya veremos más adelante que los entornos virtuales se guardan en directorios) donde poder instalar distintas versiones de programas y paquetes python. Para crear los entornos virtuales vamos a usar el programa `virtualenv` y para instalar paquetes python vamos a usar el programa `pip`. La pregunta que nos tenemos que hacer es la siguiente:
+Un entorno de desarrollo virtual python o simplemente entorno virtual python es un mecanismo que me permite gestionar programas y paquetes python sin tener permisos de administración, es decir, cualquier usuario sin privilegios puede tener uno o más "espacios aislados" (ya veremos más adelante que los entornos virtuales se guardan en directorios) donde poder instalar distintas versiones de programas y paquetes python. Para crear los entornos virtuales vamos a usar el programa `virtualenv` y para instalar paquetes python vamos a usar el programa `pip`. La pregunta que nos tenemos que hacer es la siguiente:
 
 ## ¿Para qué se usan los entornos virtuales?
 
