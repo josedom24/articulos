@@ -1,8 +1,8 @@
-# Entornos de desarrollo virtuales con python
+# Entornos de desarrollo virtuales con python3
 
 ## Introducción
 
-Un entorno de desarrollo virtual python o simplemente entorno virtual python esn software que me permite gestionar programas y paquetes python sin tener permisos de administración, es decir, cualquier usuario sin privilegios puede tener uno o más "espacios" (ya veremos más adelante que los entornos virtuales se guardan en directorios) donde poder instalar distintas versiones de programas y paquetes python. Para crear los entornos virtuales vamos a usar el programa `virtualenv` y para instalar paquetes python vamos a usar el programa `pip`. La pregunta que nos tenemos que hacer es la siguiente:
+Un entorno de desarrollo virtual python o simplemente entorno virtual python es un software que me permite gestionar programas y paquetes python sin tener permisos de administración, es decir, cualquier usuario sin privilegios puede tener uno o más "espacios aislados" (ya veremos más adelante que los entornos virtuales se guardan en directorios) donde poder instalar distintas versiones de programas y paquetes python. Para crear los entornos virtuales vamos a usar el programa `virtualenv` y para instalar paquetes python vamos a usar el programa `pip`. La pregunta que nos tenemos que hacer es la siguiente:
 
 ## ¿Para qué se usan los entornos virtuales?
 
@@ -25,10 +25,129 @@ No, existe herramientas parecidas en distintos lenguajes que nos ofrecen funcion
 * [rbenv](https://github.com/rbenv/rbenv) y [RVM](http://rvm.io/) para ruby
 * [nodeenv](https://pypi.python.org/pypi/nodeenv/), [nvm](https://github.com/creationix/nvm), [n](https://github.com/tj/n) y [nave](https://github.com/isaacs/nave) para node.js
 
-## Empecemos a trabajar con entornos virtuales
+## ¿Qué programa necesito para crear un entorno virtual con python3?
+
+Tradicionalmente hemos utilizado la herramienta [virtualenv](https://pypi.python.org/pypi/virtualenv/) para crear nuestro entornos virtuales. Sin embargo, desde la versión 3.3 de python tenemos a nuestra disposición un módulo del sistema [venv](https://docs.python.org/3.3/library/venv.html) que podemos utilizar para crear nuestro entorno virtual. Por lo tanto debemos diferenciar los distintos paquetes que podemos utilizar:
+
+	* `virtualenv` es un software oficial de python, desarrollado por terceros, que podemos encontrar en el *Python Package Index* o *PyPI*, que es el repositorio de paquetes de software oficial para aplicaciones de terceros en el lenguaje de programación Python. 
+	* `venv` es un módulo oficial del lenguaje que a partir de la versión 3.3 nos permite crear entornos virtuales.
+	* `pip`: Independientemente de la manera en que cree el entorno virtual, utilizando una de las dos herramientas anteriores, vamos a utilizar este sistema de gestión de paquetes utilizado para instalar y administrar paquetes de software escritos en Python que se encuentran alojados en el repositorio *PyPI*.
+
+## Creando entornos virtuales con `virtualenv`
+
+Podemos utilizar este software para trabajar con cualquier distribución de python, pero evidentemente es obligatorio si estamos trabajando con python 2.x o python 3.x (una versión anterior a la 3.3). 
 
 ### Instalación de los paquetes necesarios
 
 En este manual se va a realizar la instalación y configuración en una distribución GNU/Linux Debian  Jessie, en otra versión del sistema u otra distribución puede haber algunas diferencias.
 
-Instalamos los paquetes necesarios
+Instalamos los paquetes necesarios como root:
+
+	# apt-get install python-virtualenv
+
+Ahora ya como un usuario sin privilegio podemos crear un entorno virtual con el interprete python 2.7:
+
+	$ virtualenv entorno
+	Running virtualenv with interpreter /usr/bin/python2
+	New python executable in entorno/bin/python2
+	Also creating executable in entorno/bin/python
+	Installing setuptools, pip...done.
+
+Si queremos crear un entorno virtual con python3:
+
+	$ virtualenv -p /usr/bin/python3 entorno3
+	Already using interpreter /usr/bin/python3
+	Using base prefix '/usr'
+	New python executable in entorno3/bin/python3
+	Also creating executable in entorno3/bin/python
+	Installing setuptools, pip...done.
+
+En los dos casos se ha creado un directorio, donde se instalarán posteriormente los paquetes que necesitemos:
+
+	$ cd entrono3
+	$ ls
+	bin  lib
+
+### Activando nuestro entrono virtual
+
+Independientemente el interprete que utilicemos en nuestro entrono para activarlo tenemos que ejecutar la siguiente instrucción:
+
+	$ source entorno3/bin/activate
+	(entorno3)$ 
+
+Podemos observar que nuestro prompt ha cambiado, a partir de ahora estamos en nuestro entorno aislado, los paquetes python instalados en el sistema no serán visibles y a partir de ahora todos los paquetes instalados con `pip` se instalarán en el entorno virtual.
+
+Si entremos 
+
+### Desactivando nuestro entono virtual
+
+Para salir del entorno que estamos ejecutando simplemente ejercutamos la siguiente instrucción:
+
+	(entorno3)$ deactivate
+	$
+
+## Creando entornos virtuales con `venv`
+
+A partir de la versión 3.3 de python podemos utilizar el módulo `venv` para crear el entorno virtual.
+
+### Instalación de los paquetes necesarios
+
+Instalamos el siguiente paquete para instalar el módulos:
+
+	# apt-get install python3-venv
+
+Ahora ya como un usuario sin privilegio podemos crear un entorno virtual con python3:
+
+	$ python3 -m venv otroentorno
+
+En este caso, a diferencia de usar la herramienta `virtualenv`, tenemos otra estructura de directorios en nuestro entorno virtual:
+
+	$ cd otroentorno
+	$ ls
+	bin  include  lib  lib64  pyvenv.cfg
+
+### Activando y desactivando nuestro entorno virtual
+
+La activación y la desactivación del entrono se realiza de forma similar a la explicada anteriormente:
+
+	$ source otroentorno/bin/activate
+	(otroentorno)$ deactivate
+	$ 
+
+## Instalando paquetes en nuestro entorno virtual
+
+Independientemente del sistema utilizado para crear nuestro entorno virtual, una vez que lo tenemos activado podemos instalar paquetes python en él utilizando la herramienta `pip` (que la tenemos instalada automáticamente en nuestro entorno). Partiendo de un entrono activado, podemos, por ejemplo, instalar la última versión de django:
+
+	(otroentorno)$ pip install django
+	Downloading/unpacking django
+	  Downloading Django-1.10.5-py2.py3-none-any.whl (6.8MB): 6.8MB downloaded
+	Installing collected packages: django
+	Successfully installed django
+	Cleaning up...
+
+Si queremos ver los paquetes que tenemos instalados con sus dependencias:
+
+	(otroentorno)$ pip list
+	$ pip list
+	Django (1.10.5)
+	pip (1.5.6)
+	setuptools (5.5.1)
+
+Si necesitamos buscar un paquete podemos utilizar la siguiente opción:
+
+	(otroentorno)$ pip search requests
+
+Si a continuación necesitamos instalar una versión determinada del paquete, que no sea la última, podemos hacerlo de la siguiente manera:
+
+	(otroentorno)$ pip install requests=="2.12"
+	Downloading/unpacking requests==2.12
+	  Downloading requests-2.12.0-py2.py3-none-any.whl (574kB): 574kB downloaded
+	Installing collected packages: requests
+	Successfully installed requests
+	Cleaning up...
+
+Si necesitamos borrar un paquete podemos ejecutar:
+
+	(otroentorno)$ pip uninstall requests
+
+Para terminar de repasar la herramienta `pip`
