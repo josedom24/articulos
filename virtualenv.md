@@ -125,6 +125,11 @@ Independientemente del sistema utilizado para crear nuestro entorno virtual, una
 	Successfully installed django
 	Cleaning up...
 
+Podemos comprobar que efectivamente hemos instala la última versión de django:
+
+	(entorno3) $ django-admin --version
+	1.10.5
+
 Si queremos ver los paquetes que tenemos instalados con sus dependencias:
 
 	(entorno3)$ pip list
