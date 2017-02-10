@@ -8,17 +8,17 @@ Un entorno de desarrollo virtual python o simplemente entorno virtual python es 
 
 Puede haber varios motivos en que su uso es conveniente e incluso necesario:
 
-* Podemos tener necesidad de utilizar versiones de paquetes python que no son las que vienen empaquetadas oficialmente en nuestra distribución linux. La versión que se instala con nuestro gestor de paquetes, por ejemplo con `apt` en GNU/Linux Debian no corresponde con nuestras necesidades. Una solución puede ser usar `pip` como administrador: esta solución nos puede dar muchos problemas  que podemos romper las dependencias entre las versiones de nuestros paquetes python instalados en el sistema, puedo "romper" las dependencia y algún paquete puede dejar de funcionar. En este caso sería necesario la utilización de un entorno virtual.
+* Podemos tener necesidad de utilizar versiones de paquetes python que no son las que vienen empaquetadas oficialmente en nuestra distribución linux. La versión que se instala con nuestro gestor de paquetes, por ejemplo con `apt` en GNU/Linux Debian no corresponde con nuestras necesidades. Una solución puede ser usar `pip` como administrador: esta solución nos puede dar muchos problemas, ya que podemos romper las dependencias entre las versiones de nuestros paquetes python instalados en el sistema y algún paquete puede dejar de funcionar. En este caso sería necesario la utilización de un entorno virtual.
 
 * En el caso del desarrollo y despliegue de aplicaciones, cada vez es más importante acercar los entornos de desarrollo, prueba y producción. Utilizando entornos virtuales conseguimos que las dependencias entre paquetes que necesita nuestra aplicación estén satisfechas en todos los entornos, además es muy sencillo distribuir la configuración del entorno virtual, así como automatizar su creación, entre los distintos miembros del equipo de trabajo, consiguiendo que todos trabajen bajo el mismo escenario.
 
-* Los ciclos de desarrollo de aplicaciones modernos en lenguajes con python son cada vez más rápido, esto puede suponer que en una misma máquina podemos tener aplicaciones que utilicen diferentes dependencias y versiones de un mismo paquete. Por ejemplo, podemos tener dos aplicaciones web en producción, una que esté desarrollada con django 1.8 otra con django 1.10. En este caso es imprescindible la utilización de entornos virtuales diferenciados, que sean la base de cada aplicación.
+* Los ciclos de desarrollo de aplicaciones modernos en lenguajes como python son cada vez más rápidos, esto puede suponer que en una misma máquina podemos tener aplicaciones que utilicen diferentes dependencias y versiones de un mismo paquete. Por ejemplo, podemos tener dos aplicaciones web en producción, una que esté desarrollada con django 1.8 otra con django 1.10. En este caso es imprescindible la utilización de entornos virtuales diferenciados, que sean la base de cada aplicación.
 
 Además los entornos virtuales son una herramienta que favorecen las nuevas metodologías de trabajo que se denominan DevOps, que tratan de gestionar y automatizar la configuración. FALTA ALGO
 
 ## ¿Los entornos virtuales son propios sólo del lenguaje python?
 
-No, existe herramientas parecidas en distintos lenguajes que nos ofrecen funcionalidad parecida:
+No, existen herramientas parecidas en distintos lenguajes que nos ofrecen una funcionalidad parecida:
 
 * [phpenv](https://github.com/phpenv/phpenv) para php
 * [plen](https://github.com/tokuhirom/plenv) y [perlbrew](https://perlbrew.pl/) para perl
@@ -27,11 +27,11 @@ No, existe herramientas parecidas en distintos lenguajes que nos ofrecen funcion
 
 ## ¿Qué programa necesito para crear un entorno virtual con python3?
 
-Tradicionalmente hemos utilizado la herramienta [virtualenv](https://pypi.python.org/pypi/virtualenv/) para crear nuestro entornos virtuales. Sin embargo, desde la versión 3.3 de python tenemos a nuestra disposición un módulo del sistema [venv](https://docs.python.org/3.3/library/venv.html) que podemos utilizar para crear nuestro entorno virtual. Por lo tanto debemos diferenciar los distintos paquetes que podemos utilizar:
+Tradicionalmente hemos utilizado la herramienta [virtualenv](https://pypi.python.org/pypi/virtualenv/) para crear nuestros entornos virtuales. Sin embargo, desde la versión 3.3 de python tenemos a nuestra disposición un módulo del sistema [venv](https://docs.python.org/3.3/library/venv.html) que podemos utilizar para crear nuestro entorno virtual. Por lo tanto debemos diferenciar los distintos paquetes que podemos utilizar:
 
-* `virtualenv` es un software oficial de python, desarrollado por terceros, que podemos encontrar en el *Python Package Index* o *PyPI*, que es el repositorio de paquetes de software oficial para aplicaciones de terceros en el lenguaje de programación Python. 
+* `virtualenv` es un software que podemos encontrar en el *Python Package Index* o *PyPI*, que es el repositorio de paquetes de software oficial para aplicaciones de terceros en el lenguaje de programación Python. 
 * `venv` es un módulo oficial del lenguaje que a partir de la versión 3.3 nos permite crear entornos virtuales.
-* `pip`: Independientemente de la manera en que cree el entorno virtual, utilizando una de las dos herramientas anteriores, vamos a utilizar este sistema de gestión de paquetes utilizado para instalar y administrar paquetes de software escritos en Python que se encuentran alojados en el repositorio *PyPI*.
+* `pip`: Independientemente de la manera en que creamos el entorno virtual, utilizando una de las dos herramientas anteriores, vamos a utilizar este sistema de gestión de paquetes utilizado para instalar y administrar paquetes de software escritos en Python que se encuentran alojados en el repositorio *PyPI*.
 
 ## Creando entornos virtuales con `virtualenv`
 
@@ -62,6 +62,8 @@ Si queremos crear un entorno virtual con python3:
 	Also creating executable in entorno2/bin/python
 	Installing setuptools, pip...done.
 
+La opción `-p` nos permite indicar el interprete que se va a utilizar en el entorno.
+
 En los dos casos se ha creado un directorio, donde se instalarán posteriormente los paquetes que necesitemos:
 
 	$ cd entorno2
@@ -75,13 +77,11 @@ Independientemente el interprete que utilicemos en nuestro entrono para activarl
 	$ source entorno2/bin/activate
 	(entorno2)$ 
 
-Podemos observar que nuestro prompt ha cambiado, a partir de ahora estamos en nuestro entorno aislado, los paquetes python instalados en el sistema no serán visibles y a partir de ahora todos los paquetes instalados con `pip` se instalarán en el entorno virtual.
-
-Si entremos 
+Podemos observar que nuestro prompt ha cambiado, a partir de ahora estamos en nuestro entorno aislado, los paquetes python instalados en el sistema no serán visibles y podremos instalar paquetes en él utilizando la herramienta `pip`.
 
 ### Desactivando nuestro entono virtual
 
-Para salir del entorno que estamos ejecutando simplemente ejercutamos la siguiente instrucción:
+Para salir del entorno que estamos ejecutando simplemente ejecutamos la siguiente instrucción:
 
 	(entorno2)$ deactivate
 	$
@@ -153,7 +153,7 @@ Y, por supuesto para instalar la última versión, simplemente:
 
 	(entorno3)$ pip install requests	
 
-Para terminar de repasar la herramienta `pip`, vamos a explicar como podemos guardar en un fichero (que suele llamar `requirements.txt`) la lista de paquetes instalados que nos permite de manera sencilla crear otro entorno virtual en otra máquina con los mismos paquetes instalados para ello vamos a usar la siguiente opción de `pip`:
+Para terminar de repasar la herramienta `pip`, vamos a explicar como podemos guardar en un fichero (que se suele llamar `requirements.txt`) la lista de paquetes instalados que nos permite de manera sencilla crear otro entorno virtual en otra máquina con los mismos paquetes instalados para ello vamos a usar la siguiente opción de `pip`:
 
 	(entorno3)$ pip freeze
 	Django==1.10.5
@@ -163,7 +163,7 @@ Y si queremos guardar esta información en un fichero que podamos distribuir:
 
 	(entorno3)$ pip freeze > requirements.txt
 
-De tal manera que otro usuario, en otro entorno, teniendo este fichero pude reproducirlo e instalar los mimos paquetes de la siguiente manera:
+De tal manera que otro usuario, en otro entorno, teniendo este fichero pude reproducirlo e instalar los mismos paquetes de la siguiente manera:
 
 	(entorno4)$ pip install -r requirements.txt
 
