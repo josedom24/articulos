@@ -29,9 +29,9 @@ No, existe herramientas parecidas en distintos lenguajes que nos ofrecen funcion
 
 Tradicionalmente hemos utilizado la herramienta [virtualenv](https://pypi.python.org/pypi/virtualenv/) para crear nuestro entornos virtuales. Sin embargo, desde la versión 3.3 de python tenemos a nuestra disposición un módulo del sistema [venv](https://docs.python.org/3.3/library/venv.html) que podemos utilizar para crear nuestro entorno virtual. Por lo tanto debemos diferenciar los distintos paquetes que podemos utilizar:
 
-	* `virtualenv` es un software oficial de python, desarrollado por terceros, que podemos encontrar en el *Python Package Index* o *PyPI*, que es el repositorio de paquetes de software oficial para aplicaciones de terceros en el lenguaje de programación Python. 
-	* `venv` es un módulo oficial del lenguaje que a partir de la versión 3.3 nos permite crear entornos virtuales.
-	* `pip`: Independientemente de la manera en que cree el entorno virtual, utilizando una de las dos herramientas anteriores, vamos a utilizar este sistema de gestión de paquetes utilizado para instalar y administrar paquetes de software escritos en Python que se encuentran alojados en el repositorio *PyPI*.
+* `virtualenv` es un software oficial de python, desarrollado por terceros, que podemos encontrar en el *Python Package Index* o *PyPI*, que es el repositorio de paquetes de software oficial para aplicaciones de terceros en el lenguaje de programación Python. 
+* `venv` es un módulo oficial del lenguaje que a partir de la versión 3.3 nos permite crear entornos virtuales.
+* `pip`: Independientemente de la manera en que cree el entorno virtual, utilizando una de las dos herramientas anteriores, vamos a utilizar este sistema de gestión de paquetes utilizado para instalar y administrar paquetes de software escritos en Python que se encuentran alojados en el repositorio *PyPI*.
 
 ## Creando entornos virtuales con `virtualenv`
 
