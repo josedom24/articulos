@@ -47,24 +47,24 @@ Instalamos los paquetes necesarios como root:
 
 Ahora ya como un usuario sin privilegio podemos crear un entorno virtual con el interprete python 2.7:
 
-	$ virtualenv entorno
+	$ virtualenv entorno1
 	Running virtualenv with interpreter /usr/bin/python2
-	New python executable in entorno/bin/python2
-	Also creating executable in entorno/bin/python
+	New python executable in entorno1/bin/python2
+	Also creating executable in entorno1/bin/python
 	Installing setuptools, pip...done.
 
 Si queremos crear un entorno virtual con python3:
 
-	$ virtualenv -p /usr/bin/python3 entorno3
+	$ virtualenv -p /usr/bin/python3 entorno2
 	Already using interpreter /usr/bin/python3
 	Using base prefix '/usr'
-	New python executable in entorno3/bin/python3
-	Also creating executable in entorno3/bin/python
+	New python executable in entorno2/bin/python3
+	Also creating executable in entorno2/bin/python
 	Installing setuptools, pip...done.
 
 En los dos casos se ha creado un directorio, donde se instalarán posteriormente los paquetes que necesitemos:
 
-	$ cd entrono3
+	$ cd entorno2
 	$ ls
 	bin  lib
 
@@ -72,8 +72,8 @@ En los dos casos se ha creado un directorio, donde se instalarán posteriormente
 
 Independientemente el interprete que utilicemos en nuestro entrono para activarlo tenemos que ejecutar la siguiente instrucción:
 
-	$ source entorno3/bin/activate
-	(entorno3)$ 
+	$ source entorno2/bin/activate
+	(entorno2)$ 
 
 Podemos observar que nuestro prompt ha cambiado, a partir de ahora estamos en nuestro entorno aislado, los paquetes python instalados en el sistema no serán visibles y a partir de ahora todos los paquetes instalados con `pip` se instalarán en el entorno virtual.
 
@@ -83,7 +83,7 @@ Si entremos
 
 Para salir del entorno que estamos ejecutando simplemente ejercutamos la siguiente instrucción:
 
-	(entorno3)$ deactivate
+	(entorno2)$ deactivate
 	$
 
 ## Creando entornos virtuales con `venv`
@@ -98,11 +98,11 @@ Instalamos el siguiente paquete para instalar el módulos:
 
 Ahora ya como un usuario sin privilegio podemos crear un entorno virtual con python3:
 
-	$ python3 -m venv otroentorno
+	$ python3 -m venv entorno3
 
 En este caso, a diferencia de usar la herramienta `virtualenv`, tenemos otra estructura de directorios en nuestro entorno virtual:
 
-	$ cd otroentorno
+	$ cd entorno3
 	$ ls
 	bin  include  lib  lib64  pyvenv.cfg
 
@@ -110,15 +110,15 @@ En este caso, a diferencia de usar la herramienta `virtualenv`, tenemos otra est
 
 La activación y la desactivación del entrono se realiza de forma similar a la explicada anteriormente:
 
-	$ source otroentorno/bin/activate
-	(otroentorno)$ deactivate
+	$ source entorno3/bin/activate
+	(entorno3)$ deactivate
 	$ 
 
 ## Instalando paquetes en nuestro entorno virtual
 
 Independientemente del sistema utilizado para crear nuestro entorno virtual, una vez que lo tenemos activado podemos instalar paquetes python en él utilizando la herramienta `pip` (que la tenemos instalada automáticamente en nuestro entorno). Partiendo de un entrono activado, podemos, por ejemplo, instalar la última versión de django:
 
-	(otroentorno)$ pip install django
+	(entorno3)$ pip install django
 	Downloading/unpacking django
 	  Downloading Django-1.10.5-py2.py3-none-any.whl (6.8MB): 6.8MB downloaded
 	Installing collected packages: django
@@ -127,7 +127,7 @@ Independientemente del sistema utilizado para crear nuestro entorno virtual, una
 
 Si queremos ver los paquetes que tenemos instalados con sus dependencias:
 
-	(otroentorno)$ pip list
+	(entorno3)$ pip list
 	$ pip list
 	Django (1.10.5)
 	pip (1.5.6)
@@ -135,11 +135,11 @@ Si queremos ver los paquetes que tenemos instalados con sus dependencias:
 
 Si necesitamos buscar un paquete podemos utilizar la siguiente opción:
 
-	(otroentorno)$ pip search requests
+	(entorno3)$ pip search requests
 
 Si a continuación necesitamos instalar una versión determinada del paquete, que no sea la última, podemos hacerlo de la siguiente manera:
 
-	(otroentorno)$ pip install requests=="2.12"
+	(entorno3)$ pip install requests=="2.12"
 	Downloading/unpacking requests==2.12
 	  Downloading requests-2.12.0-py2.py3-none-any.whl (574kB): 574kB downloaded
 	Installing collected packages: requests
@@ -148,24 +148,27 @@ Si a continuación necesitamos instalar una versión determinada del paquete, qu
 
 Si necesitamos borrar un paquete podemos ejecutar:
 
-	(otroentorno)$ pip uninstall requests
+	(entorno3)$ pip uninstall requests
 
 Y, por supuesto para instalar la última versión, simplemente:
 
-	(otroentorno)$ pip install requests	
+	(entorno3)$ pip install requests	
 
 Para terminar de repasar la herramienta `pip`, vamos a explicar como podemos guardar en un fichero (que suele llamar `requirements.txt`) la lista de paquetes instalados que nos permite de manera sencilla crear otro entorno virtual en otra máquina con los mismos paquetes instalados para ello vamos a usar la siguiente opción de `pip`:
 
-	(otroentrono)$ pip freeze
+	(entorno3)$ pip freeze
 	Django==1.10.5
 	requests==2.13.0
 
 Y si queremos guardar esta información en un fichero que podamos distribuir:
 
-	(otroentrono)$ pip freeze > requirements.txt
+	(entorno3)$ pip freeze > requirements.txt
 
 De tal manera que otro usuario, en otro entorno, teniendo este fichero pude reproducirlo e instalar los mimos paquetes de la siguiente manera:
 
-	(entorno3)$ pip install -r requirements.txt
+	(entorno4)$ pip install -r requirements.txt
 
+## Conclusiones
+
+En este artículos hemos estudiado las ventajas que nos aporta el uso de los entornos virtuales python, como herramienta que nos permite aislar escenarios con distintas paquetes, versiones y dependencias. Hemos visto que tenemos dos herramientas útiles para crear nuestros entornos: `virtualenv` y `venv`. Pero hay que tener en cuenta que en la actualidad sería muy deseable el uso de python3 y por tanto del módulo oficial `venv`.
 
