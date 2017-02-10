@@ -128,7 +128,6 @@ Independientemente del sistema utilizado para crear nuestro entorno virtual, una
 Si queremos ver los paquetes que tenemos instalados con sus dependencias:
 
 	(entorno3)$ pip list
-	$ pip list
 	Django (1.10.5)
 	pip (1.5.6)
 	setuptools (5.5.1)
