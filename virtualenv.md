@@ -150,4 +150,22 @@ Si necesitamos borrar un paquete podemos ejecutar:
 
 	(otroentorno)$ pip uninstall requests
 
-Para terminar de repasar la herramienta `pip`
+Y, por supuesto para instalar la última versión, simplemente:
+
+	(otroentorno)$ pip install requests	
+
+Para terminar de repasar la herramienta `pip`, vamos a explicar como podemos guardar en un fichero (que suele llamar `requirements.txt`) la lista de paquetes instalados que nos permite de manera sencilla crear otro entorno virtual en otra máquina con los mismos paquetes instalados para ello vamos a usar la siguiente opción de `pip`:
+
+	(otroentrono)$ pip freeze
+	Django==1.10.5
+	requests==2.13.0
+
+Y si queremos guardar esta información en un fichero que podamos distribuir:
+
+	(otroentrono)$ pip freeze > requirements.txt
+
+De tal manera que otro usuario, en otro entorno, teniendo este fichero pude reproducirlo e instalar los mimos paquetes de la siguiente manera:
+
+	(entorno3)$ pip install -r requirements.txt
+
+
