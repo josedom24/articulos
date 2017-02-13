@@ -2,7 +2,7 @@
 
 ## Introducción
 
-Un entorno de desarrollo virtual python o simplemente entorno virtual python es un mecanismo que me permite gestionar programas y paquetes python sin tener permisos de administración, es decir, cualquier usuario sin privilegios puede tener uno o más "espacios aislados" (ya veremos más adelante que los entornos virtuales se guardan en directorios) donde poder instalar distintas versiones de programas y paquetes python. Para crear los entornos virtuales vamos a usar el programa `virtualenv` o el módulo `venv` y para instalar paquetes python vamos a usar el programa `pip`. Antes de empezar a crear nuestros entornos, deberíamos hacernos la siguiente pregunta:
+Un entorno de desarrollo virtual python o simplemente entorno virtual python es un mecanismo que me permite gestionar programas y paquetes python sin tener permisos de administración, es decir, cualquier usuario sin privilegios puede tener uno o más "espacios aislados" (ya veremos más adelante que los entornos virtuales se guardan en directorios) donde poder instalar distintas versiones de programas y paquetes python. Para crear los entornos virtuales vamos a usar el programa `virtualenv` o el módulo `venv` y para instalar paquetes python vamos a usar el programa `pip`. Antes de empezar a crear nuestros entornos, deberíamos hacernos las siguientes preguntas:
 
 ## ¿Para qué se usan los entornos virtuales?
 
@@ -10,11 +10,11 @@ Puede haber varios motivos en que su uso es conveniente e incluso necesario:
 
 * Podemos tener necesidad de utilizar versiones de paquetes python que no son las que vienen empaquetadas oficialmente en nuestra distribución linux. La versión que se instala con nuestro gestor de paquetes, por ejemplo con `apt` en GNU/Linux Debian no corresponde con nuestras necesidades. Una solución puede ser usar `pip` como administrador: esta solución nos puede dar muchos problemas, ya que podemos romper las dependencias entre las versiones de nuestros paquetes python instalados en el sistema y algún paquete puede dejar de funcionar. En este caso sería necesario la utilización de un entorno virtual.
 
-* En el caso del desarrollo y despliegue de aplicaciones, cada vez es más importante acercar los entornos de desarrollo, prueba y producción. Utilizando entornos virtuales conseguimos que las dependencias entre paquetes que necesita nuestra aplicación estén satisfechas en todos los entornos, además es muy sencillo distribuir la configuración del entorno virtual, así como automatizar su creación, entre los distintos miembros del equipo de trabajo, consiguiendo que todos trabajen bajo el mismo escenario.
+* En el caso del desarrollo y despliegue de aplicaciones web, cada vez es más importante acercar los entornos de desarrollo, prueba y producción, es decir, que estos tres entornos sean los más parecidos posible, para no tener "sorpresas" a la hora de desplegar la aplicación en producción. Utilizando entornos virtuales conseguimos que las dependencias entre paquetes que necesita nuestra aplicación estén satisfechas en todos los entornos, además es muy sencillo distribuir la configuración del entorno virtual, así como automatizar su creación, entre los distintos miembros del equipo de trabajo, consiguiendo que todos trabajen bajo el mismo escenario.
 
-* Los ciclos de desarrollo de aplicaciones modernos en lenguajes como python son cada vez más rápidos, esto puede suponer que en una misma máquina podemos tener aplicaciones que utilicen diferentes dependencias y versiones de un mismo paquete. Por ejemplo, podemos tener dos aplicaciones web en producción, una que esté desarrollada con django 1.8 otra con django 1.10. En este caso es imprescindible la utilización de entornos virtuales diferenciados, que sean la base de cada aplicación.
+* Los ciclos de desarrollo de aplicaciones modernos en lenguajes como python son cada vez más rápidos, esto puede suponer que en una misma máquina podamos tener aplicaciones que utilicen diferentes dependencias y versiones de un mismo paquete. Por ejemplo, podemos tener dos aplicaciones web en producción, una que esté desarrollada con django 1.8 y otra con django 1.10. En este caso es imprescindible la utilización de entornos virtuales diferenciados, que sean la base de cada aplicación.
 
-Además los entornos virtuales son una herramienta que favorecen las nuevas metodologías de trabajo que se denominan DevOps, que tratan de gestionar y automatizar la configuración. FALTA ALGO
+Además los entornos virtuales son una herramienta que favorecen las nuevas metodologías de trabajo que se denominan DevOps, que tratan de gestionar y automatizar la configuración. Es muy sencillo distribuir la configuración de nuetro en torno virtual y automatizar la creación de ellos en diferentes infraestructuras y escenarios.
 
 ## ¿Los entornos virtuales son propios sólo del lenguaje python?
 
@@ -70,9 +70,9 @@ En los dos casos se ha creado un directorio, donde se instalarán posteriormente
 	$ ls
 	bin  lib
 
-### Activando nuestro entrono virtual
+### Activando nuestro entorno virtual
 
-Independientemente el interprete que utilicemos en nuestro entrono para activarlo tenemos que ejecutar la siguiente instrucción:
+Independientemente el interprete que utilicemos en nuestro entorno para activarlo tenemos que ejecutar la siguiente instrucción:
 
 	$ source entorno2/bin/activate
 	(entorno2)$ 
@@ -100,7 +100,7 @@ Ahora ya como un usuario sin privilegio podemos crear un entorno virtual con pyt
 
 	$ python3 -m venv entorno3
 
-En este caso, a diferencia de usar la herramienta `virtualenv`, tenemos otra estructura de directorios en nuestro entorno virtual:
+La opción `-m` del interprete nos permite ejecutar un módulo como si fuera un programa. En este caso, a diferencia de usar la herramienta `virtualenv`, tenemos otra estructura de directorios en nuestro entorno virtual:
 
 	$ cd entorno3
 	$ ls
@@ -108,7 +108,7 @@ En este caso, a diferencia de usar la herramienta `virtualenv`, tenemos otra est
 
 ### Activando y desactivando nuestro entorno virtual
 
-La activación y la desactivación del entrono se realiza de forma similar a la explicada anteriormente:
+La activación y la desactivación del entorno se realiza de forma similar a la explicada anteriormente:
 
 	$ source entorno3/bin/activate
 	(entorno3)$ deactivate
@@ -116,7 +116,7 @@ La activación y la desactivación del entrono se realiza de forma similar a la 
 
 ## Instalando paquetes en nuestro entorno virtual
 
-Independientemente del sistema utilizado para crear nuestro entorno virtual, una vez que lo tenemos activado podemos instalar paquetes python en él utilizando la herramienta `pip` (que la tenemos instalada automáticamente en nuestro entorno). Partiendo de un entrono activado, podemos, por ejemplo, instalar la última versión de django:
+Independientemente del sistema utilizado para crear nuestro entorno virtual, una vez que lo tenemos activado podemos instalar paquetes python en él utilizando la herramienta `pip` (que la tenemos instalada automáticamente en nuestro entorno). Partiendo de un entorno activado, podemos, por ejemplo, instalar la última versión de django:
 
 	(entorno3)$ pip install django
 	Downloading/unpacking django
@@ -158,7 +158,7 @@ Y, por supuesto para instalar la última versión, simplemente:
 
 	(entorno3)$ pip install requests	
 
-Para terminar de repasar la herramienta `pip`, vamos a explicar como podemos guardar en un fichero (que se suele llamar `requirements.txt`) la lista de paquetes instalados que nos permite de manera sencilla crear otro entorno virtual en otra máquina con los mismos paquetes instalados para ello vamos a usar la siguiente opción de `pip`:
+Para terminar de repasar la herramienta `pip`, vamos a explicar como podemos guardar en un fichero (que se suele llamar `requirements.txt`) la lista de paquetes instalados, que nos permite de manera sencilla crear otro entorno virtual en otra máquina con los mismos paquetes instalados. Para ello vamos a usar la siguiente opción de `pip`:
 
 	(entorno3)$ pip freeze
 	Django==1.10.5
