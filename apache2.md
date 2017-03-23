@@ -16,4 +16,6 @@ Hay que señalar que aunque la mayoría de los sitios web actualmente servidor p
 
 La modularidad es una de las características principales de Apache2. Si queremos añadir nuevas funcionalidades al servidor tenemos a nuestra disposición diferentes módulos que nos ofrecen esa funcionaldad.
 
-Por ejemplo, podemos hacer que apache2 sea el responsable de interpreta el código PHP de nuestras páginas, activando para ello el módulo apache2-mod-php5. De esta manera no dejamos 
+Por ejemplo, podemos hacer que apache2 sea el responsable de interpretar el código PHP de nuestras páginas, activando para ello el módulo apache2-mod-php5. De esta manera no dejamos a otro programa externo la ejecución de dicho código. 
+
+Siguiendo esta filosófia tenemos a nuestra disposición los Módulo de Multiprocesamiento (MPM), que son los responsables de configurar el comportamiento del servidor para gestionar las peticiones. dependiendo del que tengamos activado apache2 utilizara mecanismos distintos para responder las peticiones, además cada uno de estos módulos lo podemos configurar para afinar nuestras 
