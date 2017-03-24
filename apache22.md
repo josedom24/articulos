@@ -1,0 +1,12 @@
+
+## Módulos de multiproceso en Apache2
+
+Como hemos comentado anteiormente tenemos varios mecnismos para gestionar las peticiones que llegan al servidor, cada una de ellas se activarán habilitando el correspondiente módulo:
+
+	* Prefork: En este primer mécanismo cada petición se responde por un proceso individual de apache2. Cuando se inicia el servicio se crean varios procesos hijos prearados para responder peticiones HTTP. cuando aumenta el número de peticiones se crean nuevos procesos, y cuando disminuyen se van eliminando, pero siempre se quedan a la espera un número mínimo de procesos esperando para responder las futuras peticiones.
+
+	* worker: En este caso cada proceso apache2 es capaz de responder a varias peticiones, para ello se utilizan la programación basada en hilos (thread). Por lo tanto con este MPM tenemos procesos apache2 que trabajan concurrentemente, cada hilo de ejecución del proceso puede responder a una petición HTTP. Por lo tanto con menos procesos que el anterior se pueden responder a más peticiones, sin embargo si tenemos un proceso que tenga un problema y termine puede dejar sin gestionar un número mayor de peticiones. En este mecanismo también se crean procesos al iniciar el servicio, perpradaos para responder, y si van aumentando las peticiones se van creando nuevos procesos, y evidentemente cuando no hay suficiente peticiones esos procesos se van eliminando, dejando siempre alguno activo preparado para responder. Este MPM es el que viene por defecto activo en Apache2.2.
+
+	* event: En Apache2.2 estaba considerado experimental, en la nueva versión 2.4 pasa a ser el MPM por defecto. Podemos considerar este MPM como una mejora del anterior. También utiliza hilos de ejecución, pero aumenta el rendimiento de worker. Para explicarlo, necesitamos recordar que significa la persistencia de la conexión en HTTP (keep alive). Un cliente puede hacer diversas peticiones HTTP a un servidor utilizando la misma conexión TCP. En el MPM worker todas las peticiones de un cliente realizadas en una conexión persistente se servían con un mismo hilo de un proceso, la gran novedad de event es que las peticiones dentro de una conexión persistente la pueden responder hilos distintos de procesos distintos. Esto aumenta el rendimiento (número de peticiones respondidas por segundo) ya que si dentro de una conexión persistente las peticiones estaban espaciadas en el tiempo, teníamos un hilo bloqueado e inactivo en el MPM worker, mientras que con el MPM event ese bloque no existe.
+
+	
