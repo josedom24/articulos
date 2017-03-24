@@ -9,4 +9,8 @@ Como hemos comentado anteiormente tenemos varios mecnismos para gestionar las pe
 
 	* event: En Apache2.2 estaba considerado experimental, en la nueva versión 2.4 pasa a ser el MPM por defecto. Podemos considerar este MPM como una mejora del anterior. También utiliza hilos de ejecución, pero aumenta el rendimiento de worker. Para explicarlo, necesitamos recordar que significa la persistencia de la conexión en HTTP (keep alive). Un cliente puede hacer diversas peticiones HTTP a un servidor utilizando la misma conexión TCP. En el MPM worker todas las peticiones de un cliente realizadas en una conexión persistente se servían con un mismo hilo de un proceso, la gran novedad de event es que las peticiones dentro de una conexión persistente la pueden responder hilos distintos de procesos distintos. Esto aumenta el rendimiento (número de peticiones respondidas por segundo) ya que si dentro de una conexión persistente las peticiones estaban espaciadas en el tiempo, teníamos un hilo bloqueado e inactivo en el MPM worker, mientras que con el MPM event ese bloque no existe.
 
+	## Configuración de los MPM en apache2
+
+	El MPM event es el que viene instalado en apache2.4:
+
 	
