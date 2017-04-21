@@ -17,7 +17,7 @@
 * [ ] Sólo puedo utilizar 4 espacios
 * [ ] Sólo puedo usar tabuladores
 * [ ] Se puede usar tabuladores o espacios, pero no se pueden mezclar
-* [*] Se puede usar tabuladores o espacios
+* [x] Se puede usar tabuladores o espacios
 
 4. Indica la que no es una función predefinidad:
 
