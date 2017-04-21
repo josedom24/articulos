@@ -152,9 +152,86 @@
 * [ ] "aaaaa".replace("b", "a")
 * [x] "aaaaa".replace("a", "b") 
 
-Después de una declaración try para capturar una excepción usaremos
+23. Tenemos una variable de tipo `bytes` y ejecutamos la siguiente instrucción: `byte1.decode("utf-8")`:
+
+* [ ] La convierte a utf-8
+* [ ] La convierte a unicode
+* [x] La convierte a unicode si byte1 está codificada con utf-8
+* [ ] Nios devuelve una variable de tipo bytesarray
+
+24. ¿Qué valor devuelve esta instrucción: `{1,2,3}[1]`?
+
+* [x] Los conjuntos no permiten la indexación.
+* [ ] 2
+* [ ] Nos devuelve un conjunto y una lista
+* [ ] {2}
+
+25. ¿qué valor devuelve esta instrucción: `var = range(1,10);next(var)`?
+
+* [ ] 1
+* [x] Un tipo `range` no es un iterador
+* [ ] Para iterar un rango lo tengo que convertir primero en una lista
+* [ ] 11
+
+26. ¿Cuál de los siguientes es un objeto de tipo diccionario?
+
+* [x] diccionario = {'Numero': 1, 'Nombre': 'Miguel'}
+* [ ] diccionario = {'Numero' => 1, 'Nombre' => 'Miguel'}
+* [ ] diccionario = {'Numero' -> 1, 'Nombre' -> 'Miguel'}
+* [ ] diccionario = ('Numero': 1, 'Nombre': 'Miguel') 
+
+27. Si tenemos un objeto de tipo diccionario (`dict1`). ¿Qué devuelve el método `items()`?
+
+* [ ] Los valores del diccionarios
+* [ ] Las claves del diccionario
+* [ ] El número de elementos del diccionario
+* [x] Los elementos del diccionario (clave y valor)
+
+28. Si abro un fichero de la siguiente forma: `f=open("ejemplo.txt")`:
+
+* [*] No puedo escribir en el fichero
+* [ ] Al escribir se añade el contenido al final del fichero
+* [ ] Al escribir se elimina el contenido anterior del fichero
+* [ ] No puedo leer el fichero porque el puntero se situa al final del fichero
+
+29. Después de una declaración try para capturar una excepción usaremos
 
 * [ ] raise
 * [x] except
 * [ ] catch
 * [ ] throw 
+
+30. Si importo un paquete de esta forma: `from math import sqrt`. ¿Cómo debo utilizar la función?
+
+* [ ] math.sqrt
+* [*] sqrt
+* [ ] math->sqrt
+* [ ] math["sqrt"]
+
+31. Llamamos a un programa de la siguiente manera: `python sumar.py 5 6 7`. ¿Qué valor devolvería esta instrucción `len(sys.argv)`?
+
+* [ ] 1
+* [ ] 3
+* [*] 4
+* [ ] El resultado de la suma
+
+32. Para que funcione la instrucción `datetime.now()`, tengo que importar el paquete de la siguiente forma:
+
+* [ ] import datetime
+* [*] from datetime import datetime
+* [ ] from datetime import now
+* [ ] import now
+
+33. El comando `pip`:
+
+* [ ] Me crea un entorno virtual
+* [ ] Es un interprete python alternativo
+* [ ] Es un IDE para programar en python
+* [x] Es un instalador de paquetes python
+
+34. La forma correcta de escribir una función es
+
+* [ ] function nombrefuncion()
+* [ ] define nombrefuncion()
+* [x] def nombrefuncion():
+* [ ] nombrefuncion: function()
