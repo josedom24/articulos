@@ -189,7 +189,7 @@
 
 28. Si abro un fichero de la siguiente forma: `f=open("ejemplo.txt")`:
 
-* [*] No puedo escribir en el fichero
+* [x] No puedo escribir en el fichero
 * [ ] Al escribir se añade el contenido al final del fichero
 * [ ] Al escribir se elimina el contenido anterior del fichero
 * [ ] No puedo leer el fichero porque el puntero se situa al final del fichero
@@ -204,7 +204,7 @@
 30. Si importo un paquete de esta forma: `from math import sqrt`. ¿Cómo debo utilizar la función?
 
 * [ ] math.sqrt
-* [*] sqrt
+* [x] sqrt
 * [ ] math->sqrt
 * [ ] math["sqrt"]
 
@@ -212,13 +212,13 @@
 
 * [ ] 1
 * [ ] 3
-* [*] 4
+* [x] 4
 * [ ] El resultado de la suma
 
 32. Para que funcione la instrucción `datetime.now()`, tengo que importar el paquete de la siguiente forma:
 
 * [ ] import datetime
-* [*] from datetime import datetime
+* [x] from datetime import datetime
 * [ ] from datetime import now
 * [ ] import now
 
