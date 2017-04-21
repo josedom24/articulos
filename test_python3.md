@@ -19,7 +19,7 @@
 * [ ] Se puede usar tabuladores o espacios, pero no se pueden mezclar
 * [x] Se puede usar tabuladores o espacios
 
-4. Indica la que no es una función predefinidad:
+4. De las siguientes funciones o métodos, indica la que no es una función predefinida:
 
 * [ ] ascii
 * [ ] max
@@ -61,6 +61,100 @@
 * [ ] 123.3
 * [ ] La variable se crea pero no tiene ningún valor, esa instrucción provoca una excepción
 
-10. 
+10. Indica para que sirve la función `all()`:
 
+* [x] Recibe un iterador y devuelve True si todos los elementos son verdaderos o el iterador está vacío.
+* [ ] Recibe una lista y te devuelve todos los elementos
+* [ ] Recibe una secuencia y me permite recorrerla
+* [ ] Recibe un iterador y me dedvuelve True si todos los elementos son de tipo booleano.
 
+11. Para añadir una condición alternativa a una declaración condicional if se utiliza
+
+* [ ] elsif
+* [ ] else if
+* [ ] elseif
+* [x] elif 
+
+12. ¿Cuál es la forma correcta de escribir un bucle while?
+
+* [x] while a < 5:
+* [ ] while a in range(0..4)
+* [ ] while (a < 5)
+* [ ] while a foreach[0..4] 
+
+13. Indica de los siguientes tipos, el que no es una secuencia:
+
+* [ ] list
+* [x] dict
+* [ ] set
+* [ ] range
+
+14. ¿Qué valor devuelve la siguiente expresión `[1,2,3][-1]`?
+
+* [ ] [1,2]
+* [ ] Produce un error
+* [x] 3
+* [ ] [0,1,2]
+
+15. ¿Qué valor devuelve la siguiente expresión `[1,2,3,4,2,3].index(2)`?
+
+* [ ] 2
+* [x] 1
+* [ ] (1,4)
+* [ ] Produce un error
+
+16. `[x for x in range(10) if x % 2 == 0]`
+
+* [ ] Devuelve una tupla con los números pares del 1 al 10
+* [x] Devuelve una lista con los números pares del 1 al 10
+* [ ] Devuelve una lista con números pares aleatorios
+* [ ] Devuelve una lista con 10 números pares
+
+17. Esta asignación en python: `var = 1,2,3`
+
+* [ ] No se puede realizar
+* [ ] La variable vale 1
+* [ ] La varaible es una lista con 3 elementos
+* [x] La variable es una tupla
+
+18. ¿Qué valor devuelve esta instrucción: `2 in range(1,11,2)`?
+
+* [ ] True
+* [ ] 2
+* [x] False
+* [ ] No se puede utilizar un operador de pertencia con ese tipo de datos
+
+19. En python3 las cadenas de caracteres están codificadas con...
+
+* [x] unicode
+* [ ] utf-8
+* [ ] latin1
+* [ ] ascii
+
+20. Si tengo esta instrucción en python: `cad="hola"; cad[3]='e'` ¿Qué cadena obtenemos?
+
+* [ ] hole
+* [ ] holeee
+* [ ] No podemos modifcar la cedana por qué el índice 3 no existe
+* [x] No podemos modificar la cadena, por que es un tipo inmutable
+
+21. Indica de los siguientes tipos, el que es mutable:
+
+* [ ] int
+* [x] dict
+* [ ] str
+* [ ] bytes
+
+22. Para que el resultado devuelto sea "bbbbb" escribiremos
+
+* [ ] "aaaaa".substr("a", "b")
+* [ ] "aaaaa".replaceAll("b", "a")
+* [ ] "aaaaa".replace("b", "a")
+* [x] "aaaaa".replace("a", "b") 
+
+Después de una declaración try para capturar una excepción usaremos
+
+* [ ] raise
+* [x] except
+* [ ] catch
+* [ ] throw 
