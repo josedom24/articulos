@@ -9,15 +9,15 @@
 
 * [x] Tiene el valor de la última expresión que se haya evaluado
 * [ ] Me permite acceder a un método de una clase
-* [ ] Me permite indicar un número négativo
+* [ ] Me permite indicar un número negativo
 * [ ] Tiene el valor de la última variable declarada
 
 3. Cuando vamos a realizar la identación de una línea en un programa python.
 
 * [ ] Sólo puedo utilizar 4 espacios
 * [ ] Sólo puedo usar tabuladores
-* [ ] Se puede usar tabuladores o espacios, pero no se pueden mezclar
-* [x] Se puede usar tabuladores o espacios
+* [x] Se puede usar tabuladores o espacios, pero no se pueden mezclar
+* [ ] Se puede usar tabuladores o espacios
 
 4. De las siguientes funciones o métodos, indica la que no es una función predefinida:
 
@@ -26,24 +26,24 @@
 * [x] upper
 * [ ] input
 
-5. ¿Qúe sálida obtenemos al ejecutar `type(b'hola')`?
+5. ¿Qúe salida obtenemos al ejecutar `type(b'hola')`?
 
 * [x] byte
 * [ ] str
 * [ ] unicode
 * [ ] list
 
-6. Indica el que no es un tipo númerico:
+6. Indica el que no es un tipo numérico en python3:
 
 * [ ] Tipo entero (int)
 * [ ] Tipo real (float)
 * [ ] Tipo numérico (complex)
 * [x] Tipo real doble precisión (double)
 
-7. Si tenemos esta instrucción python ´var = 3; var = "hola"´¿Qúe sálida obtenemos al ejecutar `type(var)`?
+7. Si tenemos esta instrucción python ´var = 3; var = "hola"´¿Qúe salida obtenemos al ejecutar `type(var)`?
 
-* [ ] La instrucción es incorrecta no se puede utilziar el `;`
-* [ ] En python3 no podemos cambiar el valro de una variable asignada
+* [ ] La instrucción es incorrecta no se puede utilizar el `;`
+* [ ] En python3 no podemos cambiar el valor de una variable asignada
 * [x] Python3 es un lenguaje dinámico, por lo tanto la salida sería `str`
 * [ ] Python3 es un lenguaje dinámico, por lo tanto la salida sería `int`
 
@@ -98,7 +98,7 @@
 
 15. ¿Qué valor devuelve la siguiente expresión `[1,2,3,4,2,3].index(2)`?
 
-* [ ] 2
+* [ ] 3
 * [x] 1
 * [ ] (1,4)
 * [ ] Produce un error
@@ -114,7 +114,7 @@
 
 * [ ] No se puede realizar
 * [ ] La variable vale 1
-* [ ] La varaible es una lista con 3 elementos
+* [ ] La variable es una lista con 3 elementos
 * [x] La variable es una tupla
 
 18. ¿Qué valor devuelve esta instrucción: `2 in range(1,11,2)`?
@@ -122,7 +122,7 @@
 * [ ] True
 * [ ] 2
 * [x] False
-* [ ] No se puede utilizar un operador de pertencia con ese tipo de datos
+* [ ] No se puede utilizar un operador de pertenencia con ese tipo de datos
 
 19. En python3 las cadenas de caracteres están codificadas con...
 
@@ -135,7 +135,7 @@
 
 * [ ] hole
 * [ ] holeee
-* [ ] No podemos modifcar la cedana por qué el índice 3 no existe
+* [ ] No podemos modificar la cadena por qué el índice 3 no existe
 * [x] No podemos modificar la cadena, por que es un tipo inmutable
 
 21. Indica de los siguientes tipos, el que es mutable:
@@ -157,7 +157,7 @@
 * [ ] La convierte a utf-8
 * [ ] La convierte a unicode
 * [x] La convierte a unicode si byte1 está codificada con utf-8
-* [ ] Nios devuelve una variable de tipo bytesarray
+* [ ] Nos devuelve una variable de tipo bytearray
 
 24. ¿Qué valor devuelve esta instrucción: `{1,2,3}[1]`?
 
@@ -166,7 +166,7 @@
 * [ ] Nos devuelve un conjunto y una lista
 * [ ] {2}
 
-25. ¿qué valor devuelve esta instrucción: `var = range(1,10);next(var)`?
+25. ¿Qué valor devuelve esta instrucción: `var = range(1,10);next(var)`?
 
 * [ ] 1
 * [x] Un tipo `range` no es un iterador
@@ -192,7 +192,7 @@
 * [x] No puedo escribir en el fichero
 * [ ] Al escribir se añade el contenido al final del fichero
 * [ ] Al escribir se elimina el contenido anterior del fichero
-* [ ] No puedo leer el fichero porque el puntero se situa al final del fichero
+* [ ] No puedo leer el fichero porque el puntero se sitúa al final del fichero
 
 29. Después de una declaración try para capturar una excepción usaremos
 
@@ -235,3 +235,45 @@
 * [ ] define nombrefuncion()
 * [x] def nombrefuncion():
 * [ ] nombrefuncion: function()
+
+35. Si tenemos una función definida de esta manera: `def f(n1=1,*args), ¿Cuál de las siguientes llamadas es incorrecta?
+
+* [ ] f()
+* [x] f(3,n2=4)
+* [ ] f(n1=2)
+* [ ] f(3,4,5)
+
+36. Si tenemos una función definida de esta manera: `def f(**kwargs)`, y un diccionario con datos: `dict`. ¿Cuál de las siguientes llamadas es incorrecta?
+
+* [ ] f()
+* [ ] f(n=1)
+* [x] f(*dict)
+* [ ] f(**dict)
+
+37. ¿Qué diferencia hay entre una clase y un objeto?
+
+* [ ] Una clase es una instancia de un objeto
+* [x] Un objeto es una instancia de una clase
+* [ ] Un objeto no tiene tipo
+* [ ] Ninguna 
+
+38. Si tenemos un objeto `objeto` de la clase `Clase`, y queremos usar acceder a un atributo de objeto, ¿cómo se indicaría?
+
+* [ ] Clase.atributo
+* [ ] Clase.objeto.atributo
+* [ ] objeto["atributo"]
+* [x] objeto.atributo
+
+39. Definimos un constructor de una clase: `def __init__(self)`. ¿Para qué sirve la variable `self`?
+
+* [x] Es una referencia al objeto quye estamos creando
+* [ ] Es una referencia a la superclase desde que se hereda
+* [ ] Es una referencia a la clase que estamos creando
+* [ ] Guarda el valor con el que queramos inicializar el objeto
+
+40. ¿Para que sirve la función `super()`?
+
+* [ ] Para crear superclases desde la que heredamos otras clases.
+* [ ] Me indicar si una clase es madre de otra.
+* [x] Guarda una referencia a la superclase.
+* [ ] Me devuelve los atributos y métodos que tiene una clase.
