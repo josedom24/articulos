@@ -21,10 +21,16 @@ Al utilizar "views" en bind9 vamos a tener zonas diferencias según el origen de
 
 	acl interna { 10.0.0.0/24; localhost; };
 	acl externa { 172.22.0.0/16; };
+	view todas {
+	    match-clients { interna; externa;};	
+
+	    include "/etc/bind/zones.rfc1918";
+	    include "/etc/bind/named.conf.default-zones";
+	};	
+
 	view interna {
 	    match-clients { interna; };
-	    allow-recursion { any; };
-	    include "/etc/bind/zones.rfc1918";	
+	    allow-recursion { any; };	
 
 	        zone "example.org"
 	        {
@@ -40,8 +46,7 @@ Al utilizar "views" en bind9 vamos a tener zonas diferencias según el origen de
 
 	view externa {
 	    match-clients { externa; };
-	    allow-recursion { any; };
-	    include "/etc/bind/zones.rfc1918";	
+	    allow-recursion { any; };	
 
 	        zone "example.org"
 	        {
@@ -55,3 +60,32 @@ Al utilizar "views" en bind9 vamos a tener zonas diferencias según el origen de
 	        };	
 
 	};
+
+
+Hemos creado las dos "acl" para diferenciar las redes por las que vamos a consltar:
+
+	acl interna { 10.0.0.0/24; localhost; };
+	acl externa { 172.22.0.0/16; };
+
+La zona que se va a utilizar será la definida en la vista donde hayamos definidos las IP desde las que se hace las consultas:
+
+	match-clients { interna; };
+
+Otro detalle que tenemos que tener en cuanta al utilzar vistas, es que todas las zonas definidas deben estar dentro de una zona, por lo tanto las zonas de resolución inversa definidas en el RFC1918 y las zonas por defecto, la hemos incluido en una vista que se va a resolver desde todos los orígenes:
+
+	view todas {
+		    match-clients { interna; externa;};		
+
+		    include "/etc/bind/zones.rfc1918";
+		    include "/etc/bind/named.conf.default-zones";
+		};	
+
+Y no se nos puede olvidar eliminar las zonas por defecto del fichero `named.conf`:
+
+	include "/etc/bind/named.conf.options";
+	include "/etc/bind/named.conf.local";
+	//include "/etc/bind/named.conf.default-zones";
+
+## Pruebas de funcionamiento
+
+
